@@ -11,7 +11,6 @@ class KegControl extends React.Component {
         super(props);
         console.log(props);
         this.state = {
-            // formVisibleOnPage: false,
             selectedKeg: null,
             editing: false
         };
@@ -20,7 +19,6 @@ class KegControl extends React.Component {
       handleClick = () => {
         if (this.state.selectedKeg != null) {
             this.setState({
-                // formVisibleOnPage: false,
                 selectedKeg: null,
                 editing: false
             });
@@ -178,3 +176,6 @@ const mapStateToProps = state => {
 KegControl = connect(mapStateToProps)(KegControl);
 
 export default KegControl;
+
+
+
