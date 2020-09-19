@@ -37,15 +37,15 @@ class KegControl extends React.Component {
 
       handleAddingNewKegToList = (newKeg) => {
           const { dispatch } = this.props;
-          const { id, brand, varietal, price, abv, pintCount } = newKeg;
+          const { id, brand, varietal, price, abv } = newKeg;
           const action = {
             type: 'ADD_KEG',
             id: id,
             brand: brand,
             varietal: varietal,
             price: price,
-            abv: abv,
-            pintCount: pintCount,
+            abv: abv
+            // pintCount: pintCount,
           }
           dispatch(action);
           const action2 = {
@@ -144,7 +144,7 @@ KegControl.propTypes = {
     masterKegList: PropTypes.object
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
         masterKegList: state.masterKegList,
         formVisibleOnPage: state.formVisibleOnPage
