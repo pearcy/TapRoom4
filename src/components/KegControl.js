@@ -10,7 +10,7 @@ class KegControl extends React.Component {
         super(props);
         console.log(props);
         this.state = {
-            formVisibleOnPage: false,
+            // formVisibleOnPage: false,
             selectedKeg: null,
             editing: false
         };
@@ -19,20 +19,25 @@ class KegControl extends React.Component {
       handleClick = () => {
         if (this.state.selectedKeg != null) {
             this.setState({
-                formVisibleOnPage: false,
+                // formVisibleOnPage: false,
                 selectedKeg: null,
                 editing: false
             });
         } else {
-            this.setState(prevState => ({
-                formVisibleOnPage: !prevState.formVisibleOnPage,
-            }));
+            const { dispatch } = this.props;
+            const action = {
+                type: 'TOGGLE_FORM'
+            }
+            dispatch(action);
+            // this.setState(prevState => ({
+            //     formVisibleOnPage: !prevState.formVisibleOnPage,
+            // }));
         }
       }
 
       handleAddingNewKegToList = (newKeg) => {
           const { dispatch } = this.props;
-          const { id, brand, varietal, price, abv } = newKeg;
+          const { id, brand, varietal, price, abv, pintCount } = newKeg;
           const action = {
             type: 'ADD_KEG',
             id: id,
@@ -40,9 +45,14 @@ class KegControl extends React.Component {
             varietal: varietal,
             price: price,
             abv: abv,
+            pintCount: pintCount,
           }
           dispatch(action);
-          this.setState({formVisibleOnPage: false});
+          const action2 = {
+              type: 'TOGGLE_FORM'
+          }
+          dispatch(action2);
+        //   this.setState({formVisibleOnPage: false});
         }
 
  
@@ -108,7 +118,7 @@ class KegControl extends React.Component {
                 buttonText = "Return to List";
             }
 
-                else if (this.state.formVisibleOnPage) {
+                else if (this.props.formVisibleOnPage) {
                 currentlyVisibleState = <KegForm 
                 onNewKegCreation={this.handleAddingNewKegToList} />;
                 buttonText = "Return to List"; 
@@ -134,9 +144,11 @@ KegControl.propTypes = {
     masterKegList: PropTypes.object
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
-        masterKegList: state
+        masterKegList: state.masterKegList,
+        formVisibleOnPage: state.formVisibleOnPage
+        // masterKegList: state
     }
 }
 

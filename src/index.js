@@ -4,10 +4,11 @@ import './assets/styles.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
-import reducer from './reducers/keg-list-reducer';
+// import reducer from './reducers/keg-list-reducer';
 import { Provider } from 'react-redux';
+import rootReducer from './reducers/index';
 
-const store = createStore(reducer);
+const store = createStore(rootReducer);
 
 store.subscribe(() =>
   console.log(store.getState())
