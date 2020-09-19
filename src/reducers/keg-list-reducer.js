@@ -1,7 +1,7 @@
 import * as c from './../actions/ActionTypes';
 
 export default (state = {}, action) => {
-    const { brand, varietal, price, abv, id } = action;
+    const { brand, varietal, price, abv, pintCount, id } = action;
     switch (action.type) {
     case c.ADD_KEG:
         return Object.assign({}, state, {
@@ -10,6 +10,7 @@ export default (state = {}, action) => {
                 varietal: varietal,
                 price: price,
                 abv: abv,
+                pintCount: pintCount,
                 id: id
             }
         });
