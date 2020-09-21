@@ -52,8 +52,7 @@ class KegControl extends React.Component {
 
       handleSelectedKeg = (id) => {
           const selectedKeg = this.props.masterKegList[id];
-          this.setState({selectedKeg: selectedKeg
-        });
+          this.setState({selectedKeg: selectedKeg});
       }
 
         handleDeletingKeg = (id) => {
@@ -79,7 +78,7 @@ class KegControl extends React.Component {
             if (this.state.selectedKeg !=null) {
                 currentlyVisibleState = <KegDetail 
                 keg = {this.state.selectedKeg} 
-                // onPintPour = {this.handlePintPour}
+                onPintPour = {this.handlePintPour}
                 />
                 buttonText = "Return to List";
             }
