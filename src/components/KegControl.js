@@ -63,21 +63,14 @@ class KegControl extends React.Component {
             this.setState({selectedKeg: null});
         }
 
-
-    // handlePintPour = (id) => {
-    //     const keg = this.state.masterKegList
-    //     .filter(keg => keg.id === id)[0];
-    //     if (keg.pintCount > 0) {
-    //         keg.pintCount --;
-    //         }
-    //         const changedMasterKegList = this.state.masterKegList
-    //         .filter(keg => keg.id !== this.state.selectedKeg.id)
-    //         .concat(keg);
-    //         this.setState({
-    //             masterKegList: changedMasterKegList,
-    //             editing: false,
-    //         });
-    //     }
+        handlePintPour = (id) => {
+            const selectedKeg = this.props.masterKegList[id];
+            if(this.state.selectedKeg.pintCount > 0) {
+                this.state.selectedKeg.pintCount = this.state.selectedKeg.pintCount -1;
+                this.setState({ selectedKeg: this.state.selectedKeg});
+            }
+          }
+   
       
         render() {
             let currentlyVisibleState = null;
