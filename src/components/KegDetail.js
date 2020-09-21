@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import PintPour from "./PintPour";
 // import Keg from './Keg';
 
 function KegDetail(props) {
-    const { keg } = props;
+    const { keg, onPintPour } = props;
 
             return (
             <React.Fragment>
@@ -38,7 +39,7 @@ function KegDetail(props) {
 
 KegDetail.propTypes = {
     keg: PropTypes.object,
-    // handlePintPour: PropTypes.func
+    handlePintPour: PropTypes.func
 };
 
 export default KegDetail;
